@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/images/logo_ico.png">
+    <title>Enter 搜集房源</title>
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/spider_page.css">
+
+</head>
+<body>
+    <div id="app1" v-cloak>
+        <div id="menu">
+            <el-menu :default-active="default_index" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                     background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="1">Enter主页</el-menu-item>
+            <el-menu-item><div class="block"><el-avatar :size="50" :src="user_image_path"></el-avatar></div></el-menu-item>
+            <el-submenu index="2">
+                <template slot="title">个人</template>
+                    <el-menu-item index="2-1">密码管理</el-menu-item>
+                    <el-menu-item index="2-2">我的空间</el-menu-item>
+                    <el-menu-item index="2-3">登录轨迹</el-menu-item>
+                    <el-menu-item index="2-4">退出登录</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="3">资料搜集</el-menu-item>
+            <el-menu-item index="4">资料查询</el-menu-item>
+            <el-menu-item index="5">房源地图</el-menu-item>
+            <el-menu-item index="6">房源分析</el-menu-item>
+        </el-menu>
+        </div>
+
+
+        <div id="header">
+            <el-carousel
+                    v-loading="loading"
+                    element-loading-text="拼命加载中"
+                    element-loading-spinner="el-icon-loading"
+                    :interval="4000"
+                    type="card"
+                    height="300px">
+                <el-carousel-item v-for="item in spider_info" :key="item">
+                    <img class="medium" v-bind:src="item"></img>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+
+        <el-select v-model="city" filterable placeholder="请选择城市" @change="selectCity()">
+                <el-option
+                        v-for="c in citys"
+                        :key="c.num"
+                        :label="c.value"
+                        :value="c.value">
+                </el-option>
+            </el-select>
+        <el-select v-model="county" filterable placeholder="请选择市区" @change="selectCounty()">
+                <el-option
+                        v-for="co in counties"
+                        :key="co.num"
+                        :label="co.value"
+                        :value="co.value">
+                </el-option>
+            </el-select>
+        <el-select v-model="comm" filterable placeholder="请选择街道">
+                <el-option
+                        v-for="com in comms"
+                        :key="com"
+                        :label="com"
+                        :value="com">
+                </el-option>
+            </el-select>
+
+        <div id="input">
+            <el-input
+                placeholder="需精确爬取小区请输入内容"
+                v-model="input"
+                clearable>
+            </el-input>
+        </div>
+
+        <div id="sure_button">
+            <el-button type="primary" icon="el-icon-search" size="medium" id="search" @click="start_spider">开始搜集</el-button>
+        </div>
+    </div>
+
+    <script src="/static/js/mine_index.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+    <script src="/static/js/spider_page.js"></script>
+
+</body>
+</html>

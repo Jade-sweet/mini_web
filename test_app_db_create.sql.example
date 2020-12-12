@@ -1,0 +1,100 @@
+-- 如果存在名为zufang的数据库就删除它
+drop database if exists enter;
+
+-- 创建名为zufang的数据库并指定默认的字符集和校对规则
+create database enter default charset utf8 collate utf8_bin;
+
+-- 切换到zufang数据库
+use enter;
+
+-- 创建用户表tb_user
+create table `tb_user`
+(
+   `userid`               int auto_increment comment '编号',
+   `username`             varchar(20) not null comment '用户名',
+   `password`             char(32) not null comment '用户口令',
+   `tel`                  varchar(20) not null comment '手机号',
+   `user_image`           varchar(128) not null comment '用户的头像地址',
+   `regdate`              datetime default now() comment '注册日期',
+   `lastvisit`            datetime comment '最后访问时间',
+   primary key (`userid`)
+);
+
+-- 创建用户登录日志表tb_login_log
+create table `tb_login_log`
+(
+   `logid`                bigint auto_increment comment '编号',
+   `userid`               int not null comment '用户',
+   `ipaddr`               varchar(255) not null comment 'IP地址',
+   `logdate`              datetime default now() comment '登录时间日期',
+   `devcode`              varchar(255) default '' comment '设备代码',
+   primary key (`logid`)
+);
+
+
+-- 创建户型表tb_house_type
+create table `tb_house_type`
+(
+   `typeid`               int comment '编号',
+   `name`                 varchar(255) not null comment '名称',
+   primary key (`typeid`)
+);
+
+-- 创建爬虫表tb_spider_history
+create table `tb_spider_history`
+(
+   `spiderid`             int not null auto_increment comment '编号',
+   `city`                 varchar(20) not null comment '市',
+   `comm`                 varchar(20) not null comment '区',
+   primary key (`spiderid`)
+);
+
+-- 创建房源信息表tb_house_info
+create table `tb_house_info`
+(
+   `houseid`              int not null auto_increment comment '编号',
+   `house_num`            varchar(50) not null comment '唯一编号',
+   `city`                 varchar(32) not null comment '市',
+   `county`               varchar(32) not null comment '县',
+   `street`               varchar(32) not null comment '街道',
+   `comm_name`            varchar(32) not null comment '小区名',
+   `price`                int not null comment '价格',
+   `longitude`            varchar(32) not null comment '经度',
+   `latitude`             varchar(32) not null comment '纬度',
+   `area`                 int not null comment '面积',
+   `orientation`          varchar(10) not null comment '朝向',
+   `priceunit`            varchar(10) default '元/月' comment '价格单位',
+   `check_in_time`        varchar(20) not null comment '入住时间',
+   `floor`                varchar(20) not null comment '所在楼层',
+   `lift`                 varchar(10) not null comment '有无电梯',
+   `car_station`          varchar(10) not null comment '车位',
+   `water`                varchar(10) not null comment '用水类型',
+   `power`                varchar(10) not null comment '用电类型',
+   `gas`                  varchar(4) not null comment '有无煤气',
+   `lease_term`           varchar(20) not null comment '租期',
+   `rent_share`           varchar(20) not null comment '租房方式',
+   `house_style`          varchar(20) not null comment '房屋架构',
+   `furniture`            varchar(128) not null comment '拥有家具',
+   `metro`                int not null comment '地铁距离',
+   `detail_link`          varchar(32) not null comment '详情链接',
+   `userid`               int comment '消息发起人',
+   primary key (`houseid`)
+);
+
+-- 创建唯一约束
+create unique index `uni_idx_username` on `tb_user` (`username`);
+
+-- 创建唯一约束
+create unique index `uni_idx_tel` on `tb_user` (`tel`);
+
+-- 创建唯一约束
+create unique index `uni_idx_spider` on `tb_spider_history` (`city`, `comm`);
+-- 创建索引
+ALTER TABLE `tb_house_info` ADD INDEX city ( `city` );
+ALTER TABLE `tb_house_info` ADD INDEX county ( `county` );
+ALTER TABLE `tb_house_info` ADD INDEX street ( `street` );
+ALTER TABLE `tb_house_info` ADD INDEX comm_name ( `comm_name` );
+ALTER TABLE `tb_house_info` ADD INDEX area ( `area` );
+ALTER TABLE `tb_house_info` ADD INDEX price ( `price` );
+ALTER TABLE `tb_house_info` ADD INDEX metro ( `metro` );
+ALTER TABLE `tb_house_info` ADD INDEX house_style ( `house_style` );

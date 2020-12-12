@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/images/logo_ico.png">
+    <title>Enter 分析</title>
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/ana_page.css">
+
+</head>
+<body>
+    <div id="app1" v-cloak>
+        <div id="menu">
+            <el-menu :default-active="default_index" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                     background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="1">Enter主页</el-menu-item>
+            <el-menu-item><div class="block"><el-avatar :size="50" :src="user_image_path"></el-avatar></div></el-menu-item>
+            <el-submenu index="2">
+                <template slot="title">个人</template>
+                    <el-menu-item index="2-1">密码管理</el-menu-item>
+                    <el-menu-item index="2-2">我的空间</el-menu-item>
+                    <el-menu-item index="2-3">登录轨迹</el-menu-item>
+                    <el-menu-item index="2-4">退出登录</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="3">资料搜集</el-menu-item>
+            <el-menu-item index="4">资料查询</el-menu-item>
+            <el-menu-item index="5">房源地图</el-menu-item>
+            <el-menu-item index="6">房源分析</el-menu-item>
+        </el-menu>
+        </div>
+        <div id="h_card">
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>作者的话</span>
+                </div>
+                <div v-for="item in head_word" :key="item" class="text item">
+                    {{item}}
+                </div>
+            </el-card>
+        </div>
+        <el-divider><i class="el-icon-loading"></i></el-divider>
+
+        <!--分析主体展示-->
+        <div class="block">
+            <el-timeline>
+                <el-timeline-item timestamp="0" placement="top">
+                    <el-card>
+                        <h4>首先看看全成都2月份的租房分布情况</h4>
+                        <div style="width: 80%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/all.png" style="width: 80%; height: 80%"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            在2月份的各大租房信息中筛选面积为200平米以下，租房价格10000元/月以下的数据
+                            共得到70000条左右的数据，分布情况如上图所示。从上图可以简单看出，锦江区、
+                            高新区、成华区这几个区域的房源情况出现扎堆的情况，而其他地区通常是散状分布。
+                            这些集中的区域多为技术公司扎堆或者为...
+                        </p>
+                    </el-card>
+                </el-timeline-item>
+                <el-timeline-item timestamp="1" placement="top">
+                    <el-card>
+                        <h4>房屋价格和面积的关系分布图</h4>
+                        <div style="width: 98%;height:600px;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/price_area.png" style="width: 40%;"></img>
+                            <img src="/static/images/data/house_count_and_avg_price.png" style="width: 59%; height: 600px"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            在2月份的各大租房信息中筛选面积为200平米以下，租房价格10000元/月以下的数据
+                            共得到70000条左右的数据，分布情况如上图所示。从上图可以简单看出，锦江区、
+                            高新区、成华区这几个区域的房源情况出现扎堆的情况，而其他地区通常是散状分布。
+                            这些集中的区域多为技术公司扎堆或者为...
+                        </p>
+                    </el-card>
+                </el-timeline-item>
+                <el-timeline-item timestamp="1" placement="top">
+                    <el-card>
+                        <h4>租房面积、租房户型分布图与结论</h4>
+                        <div style="width: 90%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/area_proportion.png" style="width: 49%; height: 49%"></img>
+                            <img src="/static/images/data/house_style_count.png" style="width: 49%; height: 49%"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            从上面的饼状图可以看出，成都市区内的租房面积集中在20-110平米的范围内，
+                            大体符合一般人所能接受的范围，小部分面积超过170平米的房屋，大多为复式
+                            结构。<br>
+                            从右边的直方图可以看出户型最多的为2室1厅1卫的实用房型。
+                        </p>
+                    </el-card>
+                </el-timeline-item>
+                <!--各价格段图-->
+                <el-timeline-item timestamp="3" placement="top">
+                    <el-card>
+                        <h4>各个价格段统计分析</h4>
+                        <div style="width: 90%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/0_1000.png" style="width: 33%;"></img>
+                            <img src="/static/images/data/1000_2000.png" style="width: 33%;"></img>
+                            <img src="/static/images/data/2000_3000.png" style="width: 33%;"></img>
+                            <img src="/static/images/data/3000_4000.png" style="width: 33%;"></img>
+                            <img src="/static/images/data/4000_5000.png" style="width: 33%;"></img>
+                            <img src="/static/images/data/5000_10000.png" style="width: 33%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            在截至日期的各价格段的房屋数量统计图可以看出，大部分的租房价格集中
+                            在1000-3000挡位。高新区的房价普遍更高，可能是因为那边为技术园区的
+                            原因。
+                        </p>
+                    </el-card>
+                </el-timeline-item>
+                <el-timeline-item timestamp="4" placement="top">
+                    <el-card>
+                        <h4>朝向统计分析</h4>
+                        <div style="width: 90%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/house_orientation_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/house_orientation_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            从上面展示的两个图可以看出，房屋的朝向集中于东南、南、东三个方向，其他
+                            方向所占的比例不高，发现有个有趣的现象，朝向为北和朝向为西的房屋的每平
+                            米均价更高，难道大家更喜欢这两个朝向的房屋?
+                        </p>
+                    </el-card>
+                </el-timeline-item>
+                <el-timeline-item timestamp="5" placement="top">
+                    <el-card>
+                        <h4>其他因素统计</h4>
+                        <div style="width: 65%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/floor_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/floor_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            从上面展示的两个图可以看出，房屋的所在楼层的分布大致相当，低楼层略低，
+                            且从右边的直方图可以看出，房屋所在楼层对租房价格的影响不是很大。
+                        </p>
+                        <el-divider><i class="el-icon-s-data"></i></el-divider>
+                        <div style="width: 65%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/lift_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/lift_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            从上面展示的两个图可以看出，房屋配备电梯和不配备电梯的数量相差足有4倍，
+                            配备电梯的租房的每平米单价比没有电梯的租房单价足足高了10元/平米，看来
+                            方便上下楼的同时，您就得多一点费用。
+                        </p>
+                        <el-divider><i class="el-icon-s-data"></i></el-divider>
+                        <div style="width: 65%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/power_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/power_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            从上面展示的两个图可以看出，房屋用电类型中，商用电的房屋偏少，
+                            但是由于商用电的原因，月租往往是会有明显提升的。
+                        </p>
+                        <el-divider><i class="el-icon-s-data"></i></el-divider>
+                        <div style="width: 65%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/water_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/water_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            房屋用水类型类似用电类型，商用水的房屋偏少，一般用电类型为商用电
+                            的房屋用水类型通常也为商用水，所以月租往往是会比民用水有明显提升的。
+                        </p>
+                        <el-divider><i class="el-icon-s-data"></i></el-divider>
+                        <div style="width: 65%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/metro_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/metro_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            统计图中，我将地铁距离归为了4大类，分别为0-500米、500-1000米、
+                            1000-1500米和未知，取到的数据为未知，分析大致为这些地方处于离
+                            地铁较远的的区域，展示给用户的意义不是很大。从直方图可以看出，地
+                            铁距离直接影响了每平米的租房价格，离地铁越近，每平米的租房价格越高。
+                        </p>
+                        <el-divider><i class="el-icon-s-data"></i></el-divider>
+                        <div style="width: 65%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/share_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/share_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            从上面的两个图可以看出，成都的租房类型大多为整租，且整租的每平米
+                            单价更低，所以最好的租房方案就是叫上自己的好朋友去整租一套房，这
+                            样最实惠。
+                        </p>
+                        <el-divider><i class="el-icon-s-data"></i></el-divider>
+                        <div style="width: 65%;height:80%;margin-right:auto; margin-left:auto; overflow:hidden; text-align: center">
+                            <img src="/static/images/data/fur_1.png" style="width: 49%;"></img>
+                            <img src="/static/images/data/fur_2.png" style="width: 49%;"></img>
+                        </div>
+                        <el-divider><i class="el-icon-caret-top"></i></el-divider>
+                        <p style="width:50%; margin-right:auto; margin-left:auto;">
+                            上述的两个图可以看出，在成都的租房中，大部分的房屋是不提供家具的，
+                            提供家具的房屋的每平米均价会高上7元左右，这一些费用，就当作是家具
+                            的使用费和折旧费。
+                        </p>
+                    </el-card>
+                </el-timeline-item>
+            </el-timeline>
+        </div>
+    </div>
+
+    <script src="/static/js/mine_index.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.6.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+    <script src="/static/js/ana_page.js"></script>
+    <script src="/static/js/ana_data.js"></script>
+
+</body>
+</html>

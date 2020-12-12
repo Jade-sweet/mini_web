@@ -1,0 +1,47 @@
+
+[v-cloak]{
+	display: none;
+}
+
+#app1{
+    text-align: center;
+}
+
+#big_div{
+    margin-top: 50px;
+    text-align: center;
+    width: 600px;
+    height: 280px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#image_div{
+    width: 200px;
+    height: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+#image_div img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+#upload{
+    margin-top: 30px;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+}
+
+#name_tel{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+

@@ -1,0 +1,42 @@
+body{
+    background-color: #F2F6FC;
+}
+#app1{
+	text-align: center;
+}
+
+.my_radio{
+    margin-bottom: 1%;
+}
+
+#menu{
+    margin-bottom: 2%;
+}
+
+#search{
+	margin-top: 2%;
+}
+
+
+#input{
+    width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2%;
+}
+
+[v-cloak]{
+	display: none;
+}
+
+#image{
+    height:60px;
+    width: 60px;
+    border-radius:30px;
+}
+
+#table_list{
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -1,0 +1,80 @@
+
+
+#funny{
+    text-align: center;
+    width: 625px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1%;
+}
+
+.transition-box{
+    width: 205px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: #409EFF;
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#click_me{
+    margin-top: 20px;
+    margin-bottom:20px;
+    width: 200px;
+    height: 70px;
+    border-radius: 10px;
+    font-size: 20px;
+
+}
+
+#start_b{
+    width: 145px;
+    height:50px;
+    margin-top:-20px;
+    border-radius: 20px;
+    font-size:15px;
+}
+
+#header{
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+#color_list{
+    width: 400px;
+    text-align: center;
+}
+
+#color_list>.clearfix{
+    width: 300px;
+    float: right;
+}
+
+#color_list>#div1{
+    width: 200px;
+    text-align: center;
+    float: right;
+}
+#color_list>#div2{
+    width: 200px;
+    float: right;
+    text-align: center;
+}
+#color_list>#div3{
+    width: 200px;
+    float: right;
+    text-align: center;
+}
+#color_list>#div4{
+    width: 300px;
+    float: right;
+    text-align: center;
+}
+
+

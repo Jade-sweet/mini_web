@@ -1,0 +1,40 @@
+body{
+    background-color: #F2F6FC;
+}
+#app1{
+	text-align: center;
+}
+
+
+#menu{
+    margin-bottom: 2%;
+}
+
+
+[v-cloak]{
+	display: none;
+}
+
+#m_body{
+    margin-top:20px;
+}
+
+#div2{
+    width: 200px;
+    float: left;
+    margin-left:10px;
+}
+
+#image{
+    height:60px;
+    width: 60px;
+    border-radius:30px;
+}
+
+/*地图*/
+.picture{
+    width: 80%;
+    height:800px;
+    margin-left:10px;
+    float: left
+}

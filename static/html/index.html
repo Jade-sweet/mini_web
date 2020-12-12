@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/images/logo_ico.png">
+    <title>Enter 年轻人的专属爬虫软件</title>
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+    <body>
+        <div id="app1">
+            <div id="header">
+                <el-card class="box-card" id="color_list">
+                    <div slot="header" class="clearfix">
+                        <span>网站背景调节</span>
+                    </div>
+                    <div id="div1">
+                        <el-button plain @click="A1()">
+                            默认颜色1
+                            <el-color-picker v-model="color1" disabled="true" show-alpha></el-color-picker>
+                        </el-button>
+                    </div>
+                    <div id="div2">
+                        <el-button plain @click="A2()">
+                            默认颜色2
+                            <el-color-picker v-model="color2" disabled="true" show-alpha></el-color-picker>
+                        </el-button>
+                    </div>
+                    <div id="div3">
+                        <el-button plain @click="A3()">
+                            默认颜色3
+                            <el-color-picker v-model="color3" disabled="true" show-alpha></el-color-picker>
+                        </el-button>
+                    </div>
+                    <div id="div4">
+                        <el-color-picker v-model="color4" show-alpha @change="UserChange()"></el-color-picker>
+                    </div>
+                </el-card>
+            </div>
+
+            <!-- 首页导航-->
+            <div id="funny">
+                <div style="display: flex; height: 100px;">
+                    <transition name="el-zoom-in-center">
+                        <div v-show="show2" class="transition-box" style="background-color:rgba(104,152,214,0.82)">找工作麻烦?</div>
+                    </transition>
+
+                    <transition name="el-zoom-in-center">
+                        <div v-show="show2" class="transition-box" style="background-color:rgba(104,152,214,0.82)">找到合适住房更麻烦?</div>
+                    </transition>
+
+                    <transition name="el-zoom-in-center">
+                        <div v-show="show2" class="transition-box" style="background-color:rgba(104,152,214,0.82)">网络资源五花八门?</div>
+                    </transition>
+                </div>
+
+                <el-button @click="show2 = !show2" id="click_me">Click Me</el-button>
+
+                <div style="display: flex; height: 100px;">
+                    <transition name="el-zoom-in-center">
+                        <div v-show="show2" class="transition-box" style="background-color:rgba(104,152,214,0.82)">寻找最合适房源?</div>
+                    </transition>
+
+                    <transition name="el-zoom-in-center">
+                        <div v-show="show2" class="transition-box bac">
+                            <el-button type="primary" plain id="start_b" @click="ToPage()">点我统统解决</el-button>
+                        </div>
+                    </transition>
+
+                    <transition name="el-zoom-in-center">
+                        <div v-show="show2" class="transition-box" style="background-color:rgba(104,152,214,0.82)">直观看出性价比?</div>
+                    </transition>
+                </div>
+            </div>
+
+        <el-footer style="text-align:center;">备案号：<el-link type="primary" href="http://www.beian.miit.gov.cn/">蜀ICP备19037999号</el-link></el-footer>
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+        <!-- 引入组件库 -->
+        <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+        <script src="/static/js/index_page.js"></script>
+    </body>
+</html>

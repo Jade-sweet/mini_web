@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    border: 0;
+}
+
+/*输入框的css*/
+#input_content{
+    text-align: center;
+}
+
+
+#input_list{
+    width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10%;
+}
+
+.blank_div{
+    height: 20px;
+}
+
+#tel_code{
+    overflow: hidden;
+    margin: 0;
+}
+
+#tel_code .div1{
+    width: 60%;
+    float: left;
+}
+
+#tel_code .div2{
+    width: 35%;
+    float: right;
+}
+
+
+#foot{
+    width: 420px;
+    margin-right: 19%;
+	margin-left: auto;
+	margin-top: 10px;
+}

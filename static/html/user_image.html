@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/images/logo_ico.png">
+    <title>Enter 头像</title>
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/user_image.css">
+</head>
+    <body>
+        <div id="app1">
+
+            <el-page-header @back="goBack" content="换个心情" style="height:50px; background-color: rgba(218, 218, 218, 0.3); line-height:50px;">
+            </el-page-header>
+            <div id="big_div">
+                <el-card class="box-card">
+                    <div slot="header" class="clearfix">
+
+                        <span>{{username}} Space</span>
+                        <el-divider><i class="el-icon-files"></i></el-divider>
+                        <span>Change Your Mood</span>
+                    </div>
+                    <div id="image_div">
+                        <el-image
+                            :src="url"
+                            fit="cover"
+                            :preview-src-list="srcList">
+                            <div slot="error" class="image-slot">
+                                <i class="el-icon-picture-outline"></i>
+                            </div>
+                        </el-image>
+                    </div>
+                    <el-divider content-position="left">选择新图片即可更新头像</el-divider>
+                    <div id="upload">
+                        <el-upload
+                            name="image_files"
+                            :headers="headers"
+                            :action="upload_url"
+                            list-type="picture-card"
+                            :auto-upload= 'upload_status'
+                            limit="1"
+                            :on-success="upload_success"
+                            :on-error="upload_fail"
+                            :on-preview="handlePictureCardPreview"
+                            :on-remove="handleRemove">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                        <el-dialog :visible.sync="dialogVisible">
+                            <img width="100%" :src="dialogImageUrl" alt="">
+                        </el-dialog>
+                    </div>
+                      <el-button type="primary" @click="change_user_info()">修改手机和用户名</el-button>
+                </el-card>
+            </div>
+
+        </div>
+
+        <script src="/static/js/mine_index.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+        <!-- 引入组件库 -->
+        <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+        <script src="/static/js/user_image.js"></script>
+    </body>
+</html>

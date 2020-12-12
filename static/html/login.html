@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/images/logo_ico.png">
+    <title>Enter 登录</title>
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+    <body  style="background:url('/static/images/run.gif')">
+        <div id="app1">
+            <div id="card_s">
+                <!--卡片展示-->
+                <el-card class="box-card" id="input_list">
+                    <div slot="header" class="clearfix">
+                        <span>欢迎登录</span>
+                        <el-button style="float: right; padding: 3px 0" type="text" @click="FindPass()">找回密码</el-button>
+                        <el-button style="float: right; padding: 3px 3px" type="text" @click="NewUser()">新用户</el-button>
+                    </div>
+                    <div id="input_content">
+                        <el-input
+                            placeholder="请输入用户名或手机号"
+                            maxlength="16"
+                            v-model="username" show-word-limit>
+                            <i slot="prefix" class="el-input__icon el-icon-user"></i>
+                        </el-input>
+                        <div class="blank_div"></div>
+                        <el-input
+                            placeholder="请输入密码"
+                            maxlength="16"
+                            v-model="password" show-password show-word-limit>
+                            <i slot="prefix" class="el-input__icon el-icon-key"></i>
+                        </el-input>
+                        <div class="blank_div"></div>
+                        <el-switch
+                            v-model="switch_value"
+                            active-color="#13ce66"
+                            inactive-color="#ff4949"
+                            active-text="记住我">
+                        </el-switch>
+                        <el-divider><i class="el-icon-files"></i></el-divider>
+                        <el-button type="success" id="user_sure_click" icon="el-icon-check" circle @click="Login()"></el-button>
+                    </div>
+                </el-card>
+            </div>
+            <!--图片展示-->
+            <div id="show_some">
+                <el-card class="box-card">
+                    <el-carousel height="450px" direction="vertical" :autoplay="true">
+                        <el-carousel-item v-for="item in login_img" :key="item">
+                          <img class="medium" v-bind:src="item" style="height:100%;"></img>
+                        </el-carousel-item>
+                    </el-carousel>
+                </el-card>
+            </div>
+
+        </div>
+
+
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+        <!-- 引入组件库 -->
+        <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+        <script src="/static/js/user_login.js"></script>
+    </body>
+</html>

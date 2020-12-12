@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/images/logo_ico.png">
+    <title>Enter 我的足迹</title>
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/logs.css">
+</head>
+    <body>
+
+        <div id="app1">
+            <el-backtop target="">
+                <div id="to_head">
+                  UP
+                </div>
+            </el-backtop>
+            <el-page-header @back="goBack" content="我的足迹" style="height:50px; background-color: rgba(218, 218, 218, 1); line-height:50px;">
+            </el-page-header>
+            <div id="m_body">
+                <el-timeline v-loading="loading" v-for="item in logs_options" v-cloak>
+                    <el-timeline-item
+                            v-bind:timestamp="item.logdate.split('+')[0].split('T')[0] + ' ' + item.logdate.split('+')[0].split('T')[1]"
+                            placement="top"
+                            color='#409EFF'
+                            size='large'
+                    >
+                        <el-card>
+                            <h4>登录IP {{item.ipaddr}}</h4>
+                            <p>设备信息</p>
+                            <p>{{item.devcode}}</p>
+                        </el-card>
+                    </el-timeline-item>
+                </el-timeline>
+            </div>
+
+        </div>
+
+        <script src="/static/js/mine_index.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+        <!-- 引入组件库 -->
+        <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+        <script src="/static/js/logs.js"></script>
+    </body>
+</html>

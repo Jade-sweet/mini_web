@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/images/logo_ico.png">
+    <title>Enter 房屋地图</title>
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/house_map.css">
+
+</head>
+<body>
+    <div id="app1" v-cloak>
+        <div id="menu">
+            <el-menu :default-active="default_index" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+                     background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="1">Enter主页</el-menu-item>
+            <el-menu-item><div class="block"><el-avatar :size="50" :src="user_image_path"></el-avatar></div></el-menu-item>
+            <el-submenu index="2">
+                <template slot="title">个人</template>
+                    <el-menu-item index="2-1">密码管理</el-menu-item>
+                    <el-menu-item index="2-2">我的空间</el-menu-item>
+                    <el-menu-item index="2-3">登录轨迹</el-menu-item>
+                    <el-menu-item index="2-4">退出登录</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="3">资料搜集</el-menu-item>
+            <el-menu-item index="4">资料查询</el-menu-item>
+            <el-menu-item index="5">房源地图</el-menu-item>
+            <el-menu-item index="6">房源分析</el-menu-item>
+        </el-menu>
+        </div>
+        <div id="m_body">
+            <div id="show_map" class="picture"></div>
+            <div id="div2">
+                <el-card class="box-card">
+                    <span>选择展示的区域</span>
+                    <el-select v-model="value" placeholder="请选择" @change="MapInfo()">
+                        <el-option
+                          v-for="item in county"
+                          :key="item.num"
+                          :label="item.value"
+                          :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-card>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/static/js/mine_index.js"></script>
+    <!-- 地图要用到的包 -->
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=t9N0kV17MDZGVLksYeIpImVTctV71zuq"></script>
+	<script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.min.js"></script>
+	<script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/extension/bmap.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+    <script src="/static/js/house_map.js"></script>
+
+</body>
+</html>
